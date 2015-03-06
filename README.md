@@ -1,5 +1,6 @@
 # Docker GSG/ELK Image
-Docker image of metrics (Graphite, StatsD, Grafana) and logs (Elasticsearch, Logstash, Kibana) monitoring tools bundle. 
+Docker image of metrics (Graphite, StatsD, Grafana) and logs (Elasticsearch, Logstash, Kibana) monitoring tools bundle.
+This image is based on [Kamon Grafana Graphite](https://github.com/kamon-io/docker-grafana-graphite) docker image.
 
 ### Get started
 
@@ -21,3 +22,14 @@ port | protocol | service       | description
 4560 | TCP      | Logstash      | Logstash TCP JSON input port.
 4570 | UDP      | Logstash      | Logstash UDP JSON input port.
 5601 | TCP      | Kibana        | Kibana UI port.
+
+### Built-in service versions
+
+service       | version
+------------- | --------
+Graphite      | 0.9.x
+StatsD        | 0.7.2
+Grafana       | 1.9.1
+Elasticsearch | 1.4.x
+Logstash      | 1.4.x
+Kibana | 4.0.0
