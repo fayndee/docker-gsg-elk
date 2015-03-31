@@ -72,12 +72,14 @@ ADD ./statsd/config.js /src/statsd/config.js
 ADD ./grafana/config.js /src/grafana/config.js
 
 # Configure Elasticsearch
-
+RUN mkdir -p /usr/share/elasticsearch/config
+ADD ./elasticsearch/elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
+ADD ./elasticsearch/logging.yml /usr/share/elasticsearch/config/logging.yml
 
 # Configure Logstash
-ADD ./logstash/001-logstash-tcp-json-input.conf /etc/logstash/conf.d/001-logstash-tcp-json-input.conf
-ADD ./logstash/002-logstash-udp-json-input.conf /etc/logstash/conf.d/002-logstash-udp-json-input.conf
-ADD ./logstash/999-logstash-elasticsearch-output.conf /etc/logstash/conf.d/999-logstash-elasticsearch-output.conf
+ADD ./logstash/001-input-json-tcp /etc/logstash/conf.d/001-input-json-tcp
+ADD ./logstash/002-input-json-udp /etc/logstash/conf.d/002-input-json-udp
+ADD ./logstash/101-output-elasticsearch-local /etc/logstash/conf.d/101-output-elasticsearch-local
 
 # Configure Kibana
 
@@ -85,6 +87,9 @@ ADD ./logstash/999-logstash-elasticsearch-output.conf /etc/logstash/conf.d/999-l
 # Configure nginx and supervisord
 ADD ./nginx/nginx.conf /etc/nginx/nginx.conf
 ADD ./supervisord/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Default variables
+ENV CARBON_RELAY_DESTINATIONS="127.0.0.1:2004"
 
 # ---------------- #
 #   Expose Ports   #
