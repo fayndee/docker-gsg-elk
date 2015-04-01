@@ -12,8 +12,10 @@ This image is based on [Kamon Grafana Graphite](https://github.com/kamon-io/dock
 Service ports are configured as below and are exposed by default.
 
 port | protocol | service       | description
----- | -------- | ------------- | -----------------------------------
-2003 | TCP      | Carbon Cache  | Graphite Carbon Cache service port.  
+---- | -------- | ------------- | ------------------------------------------
+2002 | UDP      | Carbon Cache  | Carbon Cache UDP input port.
+2003 | TCP      | Carbon Cache  | Carbon Cache line (plain text) input port.
+2004 | TCP      | Carbon Cache  | Carbon Cache pickle input port.  
 8000 | TCP      | Graphite Web  | Graphite Web UI port.
 8125 | UDP      | StatsD        | StatsD UDP input port.
 8126 | TCP      | StatsD        | StatsD management port.
