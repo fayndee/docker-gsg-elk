@@ -57,6 +57,7 @@ RUN mkdir /opt/kibana \
 ADD ./graphite/initial_data.json /opt/graphite/webapp/graphite/initial_data.json
 ADD ./graphite/local_settings.py /opt/graphite/webapp/graphite/local_settings.py
 ADD ./graphite/carbon.conf /opt/graphite/conf/carbon.conf
+ADD ./graphite/relay-rules.conf /opt/graphite/conf/relay-rules.conf
 ADD ./graphite/storage-schemas.conf /opt/graphite/conf/storage-schemas.conf
 ADD ./graphite/storage-aggregation.conf /opt/graphite/conf/storage-aggregation.conf
 RUN mkdir -p /opt/graphite/storage/whisper
@@ -88,20 +89,18 @@ ADD ./logstash/101-output-elasticsearch-local /etc/logstash/conf.d/101-output-el
 ADD ./nginx/nginx.conf /etc/nginx/nginx.conf
 ADD ./supervisord/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# Default variables
-ENV CARBON_RELAY_DESTINATIONS="127.0.0.1:2004"
-
 # ---------------- #
 #   Expose Ports   #
 # ---------------- #
 
-# Graphite (Carbon & Web UI)
-EXPOSE 2003
+# Carbon Cache (UDP/Line/Pickle)
+EXPOSE 2002/udp 2003 2004
+
+# Graphite Web
 EXPOSE 8000
 
-# StatsD (UDP input & Management)
-EXPOSE 8125/udp
-EXPOSE 8126
+# StatsD (UDP/Management)
+EXPOSE 8125/udp 8126
 
 # Grafana
 EXPOSE 8080
@@ -109,9 +108,8 @@ EXPOSE 8080
 # Elasticsearch
 EXPOSE 9200
 
-# Logstash (TCP input & UDP input)
-EXPOSE 4560
-EXPOSE 4570/udp
+# Logstash (TCP/UDP)
+EXPOSE 4560 4570/udp
 
 # Kibana
 EXPOSE 5601
