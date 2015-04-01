@@ -57,7 +57,6 @@ RUN mkdir /opt/kibana \
 ADD ./graphite/initial_data.json /opt/graphite/webapp/graphite/initial_data.json
 ADD ./graphite/local_settings.py /opt/graphite/webapp/graphite/local_settings.py
 ADD ./graphite/carbon.conf /opt/graphite/conf/carbon.conf
-ADD ./graphite/relay-rules.conf /opt/graphite/conf/relay-rules.conf
 ADD ./graphite/storage-schemas.conf /opt/graphite/conf/storage-schemas.conf
 ADD ./graphite/storage-aggregation.conf /opt/graphite/conf/storage-aggregation.conf
 RUN mkdir -p /opt/graphite/storage/whisper
