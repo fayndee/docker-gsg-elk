@@ -77,9 +77,9 @@ ADD ./elasticsearch/elasticsearch.yml /usr/share/elasticsearch/config/elasticsea
 ADD ./elasticsearch/logging.yml /usr/share/elasticsearch/config/logging.yml
 
 # Configure Logstash
-ADD ./logstash/001-input-json-tcp /etc/logstash/conf.d/001-input-json-tcp
-ADD ./logstash/002-input-json-udp /etc/logstash/conf.d/002-input-json-udp
-ADD ./logstash/101-output-elasticsearch-local /etc/logstash/conf.d/101-output-elasticsearch-local
+ADD ./logstash/001-input-json-tcp.conf /etc/logstash/conf.d/001-input-json-tcp.conf
+ADD ./logstash/002-input-json-udp.conf /etc/logstash/conf.d/002-input-json-udp.conf
+ADD ./logstash/101-output-elasticsearch-local.conf /etc/logstash/conf.d/101-output-elasticsearch-local.conf
 
 # Configure Kibana
 
