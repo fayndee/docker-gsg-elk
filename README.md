@@ -9,7 +9,7 @@ This image is based on [Kamon Grafana Graphite](https://github.com/kamon-io/dock
 ### Get started
 
 1. Pull the docker image: `docker pull fayndee/gsg-elk:TAG`
-2. Run the docker container: `docker run -d -p 2003:2003 -p 8080:8080 -p 9200:9200 -p 4560:4560 -p 5601:5601 fayndee/gsg-elk:TAG`
+2. Run the docker container: `docker run -d -p 2003:2003 -p 3000:3000 -p 9200:9200 -p 4560:4560 -p 5601:5601 fayndee/gsg-elk:TAG`
 
 ### Ports configuration
 
@@ -23,7 +23,7 @@ port | protocol | service       | description
 8000 | TCP      | Graphite Web  | Graphite Web UI port.
 8125 | UDP      | StatsD        | StatsD UDP input port.
 8126 | TCP      | StatsD        | StatsD management port.
-8080 | TCP      | Grafana       | Grafana UI port.
+3000 | TCP      | Grafana       | Grafana UI port.
 9200 | TCP      | Elasticsearch | Elasticsearch service port.
 4560 | TCP      | Logstash      | Logstash TCP JSON input port.
 4570 | UDP      | Logstash      | Logstash UDP JSON input port.

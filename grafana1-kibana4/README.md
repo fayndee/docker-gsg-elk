@@ -1,7 +1,7 @@
 ### Get started
 
 1. Pull the docker image: `docker pull fayndee/gsg-elk:grafana1-kibana4`
-2. Run the docker container: `docker run -d -p 2003:2003 -p 8080:8080 -p 4560:4560 -p 5601:5601 fayndee/gsg-elk:grafana1-kibana4`
+2. Run the docker container: `docker run -d -p 2003:2003 -p 3000:3000 -p 4560:4560 -p 5601:5601 fayndee/gsg-elk:grafana1-kibana4`
 
 ### Built-in service versions
 
